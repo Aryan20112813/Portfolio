@@ -134,6 +134,46 @@ button, input, textarea {
     border-radius: 2px;
 }
 
+/* 3. LAYOUT SPACING REFINEMENT */
+.section-container {
+    width: 90%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.about-grid,
+.skills-grid,
+.project-showcase,
+.exp-card-body,
+.strengths-grid,
+.cert-grid,
+.hobbies-grid,
+.stats-grid,
+.vision-grid {
+    gap: 30px;
+}
+
+.project-showcase {
+    grid-template-columns: minmax(0, 1.05fr) 0.95fr;
+}
+
+.project-content {
+    padding: 40px;
+}
+
+.hobby-card-header {
+    margin-bottom: 24px;
+}
+
+.hobby-card {
+    padding: 32px;
+}
+
 /* Scroll reveal classes */
 .reveal-fade, .reveal-slide-up {
     opacity: 0;
@@ -910,6 +950,7 @@ button, input, textarea {
     overflow: hidden;
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
+    gap: 30px;
     margin-bottom: 50px;
 }
 
@@ -923,6 +964,54 @@ button, input, textarea {
     min-height: 350px;
 }
 
+.project-img-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.project-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(3px);
+}
+
+.project-hover-overlay span {
+    background-color: var(--color-blue-accent);
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    transform: translateY(12px);
+    transition: var(--transition-smooth);
+}
+
+.project-img-link:hover .project-hover-overlay {
+    opacity: 1;
+}
+
+.project-img-link:hover .project-hover-overlay span {
+    transform: translateY(0);
+}
+
 .project-mockup-img {
     width: 85%;
     height: auto;
@@ -931,8 +1020,31 @@ button, input, textarea {
     transition: var(--transition-smooth);
 }
 
-.project-showcase:hover .project-mockup-img {
-    transform: scale(1.03);
+.project-img-link:hover .project-mockup-img {
+    transform: scale(1.05);
+}
+
+.project-title-link {
+    color: inherit;
+    transition: var(--transition-smooth);
+}
+
+.project-title-link:hover {
+    color: var(--color-blue-accent);
+}
+
+.title-icon {
+    font-size: 0.75em;
+    opacity: 0.6;
+    margin-left: 6px;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+.project-title-link:hover .title-icon {
+    opacity: 1;
+    color: var(--color-blue-accent);
+    transform: translate(2px, -2px);
 }
 
 .project-tag-badge {
@@ -1376,7 +1488,107 @@ button, input, textarea {
     padding-top: 12px;
 }
 
-/* 15. PROFESSIONAL GALLERY SECTION */
+/* 15. APART FROM STUDIES (HOBBIES & ACTIVITIES) */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.hobby-card {
+    background-color: var(--color-white);
+    padding: 35px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-subtle);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+    border-color: var(--color-blue-accent);
+}
+
+.hobby-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hobby-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    background-color: var(--color-blue-glow);
+    color: var(--color-blue-accent);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+.hobby-card:hover .hobby-icon-wrapper {
+    background-color: var(--color-blue-accent);
+    color: var(--color-white);
+}
+
+.hobby-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-blue-accent);
+    background-color: var(--color-light-gray);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.hobby-body h3 {
+    font-size: 1.35rem;
+    color: var(--color-navy-dark);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.hobby-body p {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.hobby-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 18px;
+}
+
+.hobby-tag {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--text-navy);
+    background-color: var(--color-light-gray);
+    padding: 5px 12px;
+    border-radius: var(--border-radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hobby-tag i {
+    color: var(--color-blue-accent);
+    font-size: 0.75rem;
+}
+
+/* 16. PROFESSIONAL GALLERY SECTION */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1599,59 +1811,67 @@ button, input, textarea {
 }
 
 /* 18. CONTACT SECTION */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 50px;
-    align-items: stretch;
+.contact-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.contact-info-panel h3, .contact-form-panel h3 {
-    font-size: 1.5rem;
+.contact-info-panel {
+    text-align: center;
+}
+
+.contact-info-panel h3 {
+    font-size: 1.75rem;
     color: var(--color-navy-dark);
     margin-bottom: 12px;
     font-weight: 700;
 }
 
 .contact-info-panel p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-cards-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    text-align: left;
 }
 
 .contact-card {
     background-color: var(--color-white);
-    padding: 20px;
-    border-radius: var(--border-radius-sm);
+    padding: 24px;
+    border-radius: var(--border-radius-md);
     border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     gap: 20px;
     transition: var(--transition-smooth);
-}
-
-a.contact-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-blue-accent);
     box-shadow: var(--box-shadow-subtle);
 }
 
+a.contact-card:hover, .contact-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-blue-accent);
+    box-shadow: var(--box-shadow-hover);
+}
+
 .contact-card-icon {
-    width: 46px;
-    height: 46px;
-    background-color: var(--color-light-gray);
+    width: 52px;
+    height: 52px;
+    background-color: var(--color-blue-glow);
     color: var(--color-blue-accent);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
+    flex-shrink: 0;
     transition: var(--transition-smooth);
 }
 
@@ -1661,145 +1881,15 @@ a.contact-card:hover .contact-card-icon {
 }
 
 .contact-card-detail h5 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-navy-dark);
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     font-weight: 700;
 }
 
 .contact-card-detail p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-main);
-    margin-bottom: 0;
-}
-
-/* Contact Form CSS */
-.contact-form-panel {
-    background-color: var(--color-white);
-    padding: 40px;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-subtle);
-    border: 1px solid var(--color-border);
-}
-
-.form-group {
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.form-group label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--color-navy-dark);
-    display: block;
-    margin-bottom: 8px;
-}
-
-.form-group label .required {
-    color: #EF4444;
-}
-
-.input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-wrapper i {
-    position: absolute;
-    left: 15px;
-    color: var(--text-muted);
-    font-size: 1rem;
-}
-
-.input-wrapper input, .input-wrapper textarea {
-    width: 100%;
-    padding: 12px 15px 12px 42px;
-    border: 1.5px solid var(--color-border);
-    background-color: var(--color-light-gray);
-    border-radius: var(--border-radius-sm);
-    color: var(--color-navy-dark);
-    font-size: 0.9rem;
-    transition: var(--transition-smooth);
-}
-
-.input-wrapper textarea {
-    padding-top: 12px;
-    resize: none;
-}
-
-.input-textarea-wrapper i {
-    top: 15px;
-}
-
-.input-wrapper input:focus, .input-wrapper textarea:focus {
-    background-color: var(--color-white);
-    border-color: var(--color-blue-accent);
-    box-shadow: 0 0 0 4px var(--color-blue-glow);
-}
-
-/* Validation Style */
-.form-group.error .input-wrapper input,
-.form-group.error .input-wrapper textarea {
-    border-color: #EF4444;
-    background-color: rgba(239, 68, 68, 0.02);
-}
-
-.form-group.error .input-wrapper i {
-    color: #EF4444;
-}
-
-.error-message {
-    font-size: 0.725rem;
-    color: #EF4444;
-    font-weight: 500;
-    display: none;
-    margin-top: 6px;
-}
-
-.form-group.error .error-message {
-    display: block;
-}
-
-.btn-submit {
-    width: 100%;
-    border: none;
-    margin-top: 10px;
-}
-
-/* Success notification banner */
-#form-success-alert {
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: var(--border-radius-sm);
-    background-color: #ECFDF5;
-    border: 1.5px solid #10B981;
-    color: #065F46;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    transition: var(--transition-smooth);
-}
-
-.success-alert-hidden {
-    display: none !important;
-}
-
-#form-success-alert i {
-    font-size: 1.5rem;
-    color: #10B981;
-    margin-top: 2px;
-}
-
-#form-success-alert h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-}
-
-#form-success-alert p {
-    font-size: 0.8rem;
-    color: #047857;
     margin-bottom: 0;
 }
 
@@ -2024,9 +2114,14 @@ a.contact-card:hover .contact-card-icon {
         font-size: 3.25rem;
     }
     
-    .about-grid {
+    .about-grid,
+    .skills-grid,
+    .strengths-grid,
+    .cert-grid,
+    .stats-grid,
+    .vision-grid,
+    .hobbies-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
     }
     
     .project-showcase {
@@ -2068,11 +2163,6 @@ a.contact-card:hover .contact-card-icon {
     
     .cert-grid, .gallery-grid, .stats-grid, .vision-grid {
         grid-template-columns: 1fr 1fr;
-    }
-    
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
     }
 }
 
@@ -2183,6 +2273,14 @@ a.contact-card:hover .contact-card-icon {
     .strengths-grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    .hobbies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-cards-container {
+        grid-template-columns: 1fr;
+    }
     
     .lightbox-prev, .lightbox-next {
         width: 44px;
@@ -2215,7 +2313,7 @@ a.contact-card:hover .contact-card-icon {
         padding: 8px 14px;
     }
     
-    .learnings-grid, .cert-grid, .gallery-grid, .stats-grid, .vision-grid, .strengths-grid {
+    .learnings-grid, .cert-grid, .gallery-grid, .stats-grid, .vision-grid, .strengths-grid, .hobbies-grid {
         grid-template-columns: 1fr;
     }
     
@@ -2224,6 +2322,10 @@ a.contact-card:hover .contact-card-icon {
     }
     
     .about-summary-card {
+        padding: 24px;
+    }
+    
+    .hobby-card {
         padding: 24px;
     }
     
@@ -2238,8 +2340,73 @@ a.contact-card:hover .contact-card-icon {
     .experience-card {
         padding: 24px;
     }
-    
-    .contact-form-panel {
-        padding: 24px;
+}
+
+/* Additional responsive refinement */
+@media screen and (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .hero-intro {
+        max-width: 100%;
+    }
+
+    .section-container {
+        width: 94%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .project-showcase {
+        gap: 24px;
+    }
+
+    .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-socials {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .project-content {
+        padding: 30px;
+    }
+
+    .hobby-card {
+        padding: 28px;
+    }
+
+    #scroll-to-top {
+        bottom: 20px;
+        right: 20px;
     }
 }
