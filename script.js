@@ -157,10 +157,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const countUp = (element) => {
         const countSelector = element.getAttribute('data-count-selector');
-        const target = countSelector
+        const target = countSelector !== null
             ? document.querySelectorAll(countSelector).length
             : parseFloat(element.getAttribute('data-target'));
         const decimals = parseInt(element.getAttribute('data-decimals') || '0');
+
+        if (!Number.isFinite(target)) {
+            console.error('Key stat requires a valid data-target or data-count-selector:', element);
+            return;
+        }
+
         const duration = 1800; // Total duration in ms
         const startTime = performance.now();
 
