@@ -156,7 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let animatedStats = false;
 
     const countUp = (element) => {
-        const target = parseFloat(element.getAttribute('data-target'));
+        const countSelector = element.getAttribute('data-count-selector');
+        const target = countSelector
+            ? document.querySelectorAll(countSelector).length
+            : parseFloat(element.getAttribute('data-target'));
         const decimals = parseInt(element.getAttribute('data-decimals') || '0');
         const duration = 1800; // Total duration in ms
         const startTime = performance.now();

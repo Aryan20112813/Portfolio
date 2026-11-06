@@ -1014,6 +1014,8 @@ button, input, textarea {
 
 .project-mockup-img {
     width: 85%;
+    max-height: 85%;
+    object-fit: contain;
     height: auto;
     border-radius: var(--border-radius-sm);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -1021,6 +1023,16 @@ button, input, textarea {
 }
 
 .project-img-link:hover .project-mockup-img {
+    transform: scale(1.05);
+}
+
+.project-icon-link > i {
+    color: var(--color-blue-accent);
+    font-size: 8rem;
+    transition: var(--transition-smooth);
+}
+
+.project-icon-link:hover > i {
     transform: scale(1.05);
 }
 
@@ -1145,6 +1157,14 @@ button, input, textarea {
     padding: 6px 12px;
     border-radius: var(--border-radius-sm);
     border: 1px solid var(--color-border);
+}
+
+.project-action-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
 }
 
 /* Project Learnings Card Grid */
@@ -1387,7 +1407,7 @@ button, input, textarea {
 /* 14. ACHIEVEMENTS & CERTIFICATIONS SECTION */
 .cert-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
 }
 
@@ -2399,6 +2419,10 @@ a.contact-card:hover .contact-card-icon {
 
     .project-content {
         padding: 30px;
+    }
+
+    .project-action-link .btn {
+        width: 100%;
     }
 
     .hobby-card {
